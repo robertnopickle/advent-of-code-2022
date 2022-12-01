@@ -5,5 +5,5 @@ summed_calories_by_elf = file_data.map do |elf|
   elf.split("\n").map(&:to_i).sum
 end
 
-# output the largest sum in the array
-puts summed_calories_by_elf.sort!.last
+# output the sum of the largest three in the array
+puts summed_calories_by_elf.sort!.reverse!.take(3).sum
