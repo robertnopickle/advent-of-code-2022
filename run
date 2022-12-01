@@ -1,0 +1,5 @@
+#!/bin/bash
+
+RUBYFILE=$( ls -1 *.rb | tail -1 )
+
+bundle exec ruby $RUBYFILE
