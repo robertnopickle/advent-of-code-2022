@@ -9,7 +9,7 @@ rucksacks.each do |rucksack|
   compartments = rucksack.scan(/.{1,#{rucksack.length/2}}/)
 
   # find the common letter in each compartment and add the priority value to the sum
-  common_letter = compartments[0].chars.select { |letter| compartments[1].include?(letter) }[0]
+  common_letter = compartments[0].chars.select { |letter| compartments[1].include?(letter) }.first
   sum_of_priority_values += priority_value.index(common_letter)
 end
 
