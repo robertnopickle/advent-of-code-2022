@@ -5,10 +5,10 @@ sum_of_priority_values = 0
 priority_value = [''] + ('a'..'z').to_a + ('A'..'Z').to_a
 
 rucksacks.each do |rucksack|
-  # make an array of two strings from rucksack, splitting the string exactly in half
+  # make an array of two strings from rucksack, splitting the string exactly in half, luckily the length is always even
   compartments = rucksack.scan(/.{1,#{rucksack.length/2}}/)
 
-  # find the common letter in each compartment
+  # find the common letter in each compartment and add the priority value to the sum
   common_letter = compartments[0].chars.select { |letter| compartments[1].include?(letter) }[0]
   sum_of_priority_values += priority_value.index(common_letter)
 end
