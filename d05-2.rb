@@ -26,7 +26,7 @@ end
 
 # process the moves
 moves.each do |cmd|
-  picked_up_crates = crate_stacks[cmd["from"]].shift(cmd["move"]).reverse
+  picked_up_crates = crate_stacks[cmd["from"]].shift(cmd["move"])
   crate_stacks[cmd["to"]] = picked_up_crates + crate_stacks[cmd["to"]]
 end
 
