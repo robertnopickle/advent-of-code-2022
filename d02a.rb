@@ -1,4 +1,4 @@
-rounds = File.read("input/d02-1.txt").split("\n")
+rounds = File.read("input/d02.txt").split("\n")
 
 # Hand is an identity class for hands in rounds of rock, paper, scissors
 class Hand
