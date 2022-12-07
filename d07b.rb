@@ -85,4 +85,4 @@ required_free_space = 30_000_000
 maximum_used_space = total_disk_space - required_free_space
 size_to_free_up = fs.root.total_size - maximum_used_space
 small_dirs = fs.directories_at_least_as_large_as(size: size_to_free_up)
-puts small_dirs.map(&:total_size).sort.first
+puts small_dirs.map(&:total_size).min
