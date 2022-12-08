@@ -25,13 +25,13 @@ map_of_tree_heights.each.with_index do |row, r_i|
       next
     end
 
-    #check if the tree is visible from the top
+    # check if the tree is visible from the top
     if map_of_tree_heights.slice(0, r_i).all? { |row| row[c_i] < tree }
       visible_trees_count += 1
       next
     end
 
-    #check if the tree is visible from the bottom
+    # check if the tree is visible from the bottom
     if map_of_tree_heights.slice(r_i + 1, map_of_tree_heights.length - 1).all? { |row| row[c_i] < tree }
       visible_trees_count += 1
       next
