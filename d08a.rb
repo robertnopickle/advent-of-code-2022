@@ -4,8 +4,6 @@ visible_trees_count = 0
 
 map_of_tree_heights.each.with_index do |row, r_i|
   row.each.with_index do |tree, c_i|
-    coord = [r_i, c_i]
-
     # if the tree is on the edge, it's visible
     if c_i == 0 ||
       c_i == row.length - 1 ||
