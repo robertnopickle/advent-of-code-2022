@@ -8,7 +8,7 @@ class Monkey
     @test_details = test_details
     @inspection_count = 0
   end
-  attr_accessor :items, :operation_details, :test_details, :inpection_count
+  attr_accessor :items, :operation_details, :test_details, :inspection_count
 
   def inspect_items
     items.each { |item| inspect_item(item)}
