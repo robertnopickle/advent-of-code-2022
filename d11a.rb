@@ -6,7 +6,7 @@ class Monkey
     @items = starting_items
     @operation_details = operation_details
     @test_details = test_details
-    @inpection_count = 0
+    @inspection_count = 0
   end
   attr_accessor :items, :operation_details, :test_details, :inpection_count
 
@@ -21,7 +21,7 @@ class Monkey
     new_item_value = update_items_worry_level(item)
     destination_monkey = destination_monkey(new_item_value)
     $monkeys[destination_monkey].items << new_item_value
-    @inpection_count += 1
+    @inspection_count += 1
   end
 
   def update_items_worry_level(level)
@@ -85,4 +85,4 @@ end
 end
 
 # print the product of the two higest inspection counts
-puts $monkeys.map(&:inpection_count).sort.reverse[0..1].reduce(:*)
+puts $monkeys.map(&:inspection_count).sort.reverse[0..1].reduce(:*)
