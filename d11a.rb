@@ -1,11 +1,6 @@
 monkeys_input = File.read("input/d11.txt")
 $monkeys = []
 
-# TODO: remove this helper method before submitting
-# def log(thing)
-#   puts thing.inspect
-# end
-
 class Monkey
   def initialize(starting_items: [], operation_details:, test_details:)
     @items = starting_items
