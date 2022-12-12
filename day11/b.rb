@@ -1,5 +1,6 @@
-monkeys_input = File.read("input/d11.txt")
+monkeys_input = File.read("day11/sample.txt")
 $monkeys = []
+$combined_divisible_by = 1
 
 class Monkey
   def initialize(starting_items: [], operation_details:, test_details:)
@@ -7,6 +8,7 @@ class Monkey
     @operation_details = operation_details
     @test_details = test_details
     @inspection_count = 0
+    $combined_divisible_by *= test_details[:divisible_by] # see comments on lines 37-40
   end
   attr_accessor :items, :operation_details, :test_details, :inspection_count
 
@@ -29,8 +31,14 @@ class Monkey
       operand.is_a?(Integer) ? operand : level
     end
 
-    # <first operand> <operator> <second operand> / 3
-    operands[0].send(operation_details[:operator], operands[1]) / 3
+    # <first operand> <operator> <second operand>
+    new_value = operands[0].send(operation_details[:operator], operands[1])
+
+    # Since all of the monkeys are using the same operation for their tests,
+    # I'm dividing the new value by the product of all of the test divisors
+    # and keeping the remainder.  This way, the item values stay small and
+    # remain meaningful.
+    new_value = new_value % $combined_divisible_by
   end
 
   def destination_monkey(item)
@@ -77,8 +85,8 @@ monkeys_input.split("\n").each_slice(7) do |input|
   )
 end
 
-# monkeys take turns for 20 rounds...
-20.times do
+# monkeys take turns for 10_000 rounds...
+10_000.times do |round|
   $monkeys.each do |monkey|
     monkey.inspect_items
   end

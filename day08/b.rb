@@ -1,5 +1,5 @@
 # make a two-dimensional array of the tree heights, with each row being a layer
-map_of_tree_heights = File.read("input/d08.txt").split("\n").map { |line| line.split("").map(&:to_i) }
+map_of_tree_heights = File.read("day08/sample.txt").split("\n").map { |line| line.split("").map(&:to_i) }
 best_scenic_score = 0
 
 # method that counts the number of given trees visible from a given tree

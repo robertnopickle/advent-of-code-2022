@@ -1,4 +1,4 @@
-terminal_output = File.read("input/d07.txt").split("\n")
+terminal_output = File.read("day07/sample.txt").split("\n")
 
 # File is a class with a name and a file size
 class File
@@ -68,10 +68,10 @@ class FileStructure
     @current_working_dir.add_subdir(sub_dir)
   end
 
-  def directories_at_least_as_large_as(size:, directory: @root)
+  def collect_small_directories(max_size:, directory: @root)
     # returns all directories with a total size less than the given size
-    directory.subdirs.select { |dir| dir.total_size >= size } +
-      directory.subdirs.flat_map { |dir| directories_at_least_as_large_as(size: size, directory: dir) }
+    directory.subdirs.select { |dir| dir.total_size < max_size } +
+      directory.subdirs.flat_map { |dir| collect_small_directories(max_size: max_size, directory: dir) }
   end
 end
 
@@ -79,10 +79,6 @@ end
 fs = FileStructure.new
 terminal_output.each { |line| fs.process_line(line) }
 
-# find the smallest directory that needs to be deleted to have 30MB of free space on the disk
-total_disk_space = 70_000_000
-required_free_space = 30_000_000
-maximum_used_space = total_disk_space - required_free_space
-size_to_free_up = fs.root.total_size - maximum_used_space
-small_dirs = fs.directories_at_least_as_large_as(size: size_to_free_up)
-puts small_dirs.map(&:total_size).min
+# collect the all directories with a total size less than 100,000
+small_dirs = fs.collect_small_directories(max_size: 100_000)
+puts small_dirs.map(&:total_size).sum # output the total sizes of all the small directories
