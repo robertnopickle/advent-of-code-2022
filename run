@@ -1,3 +1,9 @@
 #!/bin/bash
 
-bundle exec ruby runner.rb
+if [ $# -eq 0 ]
+  then
+    echo "Needs one argument.  exiting..."
+    exit 1
+fi
+
+bundle exec ruby runner.rb $1

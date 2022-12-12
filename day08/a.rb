@@ -1,5 +1,5 @@
 # make a two-dimensional array of the tree heights, with each row being a layer
-map_of_tree_heights = File.read("day08/sample.txt").split("\n").map { |line| line.split("").map(&:to_i) }
+map_of_tree_heights = File.read(ENV.fetch("input")).split("\n").map { |line| line.split("").map(&:to_i) }
 visible_trees_count = 0
 
 map_of_tree_heights.each.with_index do |row, r_i|

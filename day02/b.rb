@@ -1,4 +1,4 @@
-rounds = File.read("day2/sample.txt").split("\n")
+rounds = File.read(ENV.fetch("input")).split("\n")
 
 # Hand is a class to decode hands in rounds of rock, paper, scissors
 class Hand

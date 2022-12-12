@@ -1,4 +1,4 @@
-moves = File.read("day09/sample.txt").split("\n")
+moves = File.read(ENV.fetch("input")).split("\n")
 
 $knots = []
 $tail_positions = ["0,0"]

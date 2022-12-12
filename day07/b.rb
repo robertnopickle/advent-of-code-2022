@@ -1,4 +1,4 @@
-terminal_output = File.read("day07/sample.txt").split("\n")
+terminal_output = File.read(ENV.fetch("input")).split("\n")
 
 # File is a class with a name and a file size
 class File

@@ -6,12 +6,24 @@
     {
       "label": "run",
       "type": "shell",
-      "command": "sh ./run",
+      "command": "sh ./run ${input:runOptions}",
       "problemMatcher": [],
       "group": {
         "kind": "build",
         "isDefault": true
       }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "runOptions",
+      "type": "pickString",
+      "description": "Select an option:",
+      "default": "",
+      "options": [
+        "LATEST_WITH_TEST=1",
+        "LATEST_WITH_SAMPLE=1"
+      ]
     }
   ]
 }

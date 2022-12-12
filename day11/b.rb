@@ -1,4 +1,4 @@
-monkeys_input = File.read("day11/sample.txt")
+monkeys_input = File.read(ENV.fetch("input"))
 $monkeys = []
 $combined_divisible_by = 1
 

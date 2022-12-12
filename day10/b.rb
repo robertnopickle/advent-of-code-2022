@@ -1,4 +1,4 @@
-instructions = File.read("day10/sample.txt").split("\n")
+instructions = File.read(ENV.fetch("input")).split("\n")
 
 class CRT
   LIT_PIXEL = "#"

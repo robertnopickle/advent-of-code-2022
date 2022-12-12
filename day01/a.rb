@@ -1,4 +1,4 @@
-file_data = File.read("day01/sample.txt").split("\n\n")
+file_data = File.read(ENV.fetch("input")).split("\n\n")
 
 # go through each elf and sum the food item calories, creating an array of sums by elf
 summed_calories_by_elf = file_data.map do |elf|

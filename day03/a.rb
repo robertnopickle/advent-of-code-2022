@@ -1,4 +1,4 @@
-rucksacks = File.read("day03/sample.txt").split("\n")
+rucksacks = File.read(ENV.fetch("input")).split("\n")
 
 sum_of_priority_values = 0
 # creating an array where "a" is index 1, "b" is index 2, ..., "A" is index 27, "B" is index 28, etc.

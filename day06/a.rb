@@ -1,4 +1,4 @@
-signal = File.read("day06/sample.txt").chars
+signal = File.read(ENV.fetch("input")).chars
 marker = nil
 
 signal.each.with_index(3) do |c, i|

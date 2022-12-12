@@ -1,4 +1,4 @@
-section_assignment_pairs = File.read("day04/sample.txt").split("\n")
+section_assignment_pairs = File.read(ENV.fetch("input")).split("\n")
 
 overlapping_total = 0
 

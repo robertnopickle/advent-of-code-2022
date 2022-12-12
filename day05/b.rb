@@ -1,4 +1,4 @@
-input = File.read("day05/sample.txt").split("\n")
+input = File.read(ENV.fetch("input")).split("\n")
 
 number_of_crate_stacks = input[0].length / 4 + 1
 crate_stacks = []
