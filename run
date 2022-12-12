@@ -6,4 +6,5 @@ if [ $# -eq 0 ]
     exit 1
 fi
 
+clear
 bundle exec ruby runner.rb $1

@@ -22,5 +22,9 @@ if [$day, $part, $input].any?(&:nil?)
 end
 
 ENV["input"] = $input
+puts "=================================="
+puts
 puts "Running #{$part} with #{$input}..."
 require "./#{$part}"
+puts
+puts "=================================="
