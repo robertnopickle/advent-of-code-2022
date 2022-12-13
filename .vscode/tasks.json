@@ -4,13 +4,23 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "run",
+      "label": "run latest",
       "type": "shell",
       "command": "sh ./run ${input:runOptions}",
       "problemMatcher": [],
       "group": {
         "kind": "build",
-        "isDefault": true
+        "isDefault": false
+      }
+    },
+    {
+      "label": "run specific day/part/input",
+      "type": "shell",
+      "command": "sh ./run-specific ${input:day} ${input:part} ${input:input}",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": false
       }
     }
   ],
@@ -19,11 +29,38 @@
       "id": "runOptions",
       "type": "pickString",
       "description": "Select an option:",
-      "default": "",
+      "default": "LATEST_WITH_TEST=1",
       "options": [
         "LATEST_WITH_TEST=1",
         "LATEST_WITH_SAMPLE=1"
       ]
+    },
+    {
+      "id": "day",
+      "type": "promptString",
+      "description": "Select a day:",
+      "default": "1",
+    },
+    {
+      "id": "part",
+      "type": "pickString",
+      "description": "Select a part:",
+      "options": [
+        "a",
+        "b"
+      ],
+      "default": "a",
+    },
+    {
+      "id": "input",
+      "type": "pickString",
+      "description": "Select an input:",
+      "options": [
+        "test",
+        "sample",
+        "test2"
+      ],
+      "default": "sample",
     }
   ]
 }

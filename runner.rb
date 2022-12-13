@@ -1,30 +1,48 @@
 MODES = {
   "LATEST_WITH_TEST=1" => :latest_test,
-  "LATEST_WITH_SAMPLE=1" => :latest_sample
+  "LATEST_WITH_SAMPLE=1" => :latest_sample,
+  "SPECIFIC=1" => :specific
 }
 
 mode = MODES[ARGV.first] || :latest_test # default to latest test
-$day = Dir.glob("day*").sort.last
-$part = Dir.glob("#{$day}/*.rb").sort.last
 
-if $part.nil? # go to previous day since there is no part file found in this day's folder...
-  $day = Dir.glob("day*").sort[-2]
-  $part = Dir.glob("#{$day}/*.rb").sort.last
-end
+day_num = ARGV[1] # day number
+part_letter = ARGV[2] # part letter
+input_source = ARGV[3] # input source
 
-$input = mode == :latest_test ? Dir.glob("#{$day}/test.txt").sort.last : Dir.glob("#{$day}/sample.txt").sort.last
+day = 
+  if mode == :specific && !day_num.nil?
+    Dir.glob("day#{day_num.to_s.rjust(2, "0")}").sort.last
+  else
+    Dir.glob("day*").sort.last
+  end
+
+part =
+  if mode == :specific && !part_letter.nil?
+    Dir.glob("#{day}/#{part_letter}.rb").sort.last
+  else
+    Dir.glob("#{day}/*.rb").sort.last
+  end
+
+input =
+  if mode == :specific && !input_source.nil?
+    Dir.glob("#{day}/#{input_source}.txt").sort.last
+  elsif mode == :latest_sample
+    Dir.glob("#{day}/sample.txt").sort.last
+  else
+    Dir.glob("#{day}/test.txt").sort.last
+  end
 
 # handle any nil values with a message and exit
-if [$day, $part, $input].any?(&:nil?)
+if [day, part, input].any?(&:nil?)
   puts "Something went wrong!"
-  puts "Attempted to run #{$part} with #{$input}"
   exit
 end
 
-ENV["input"] = $input
+ENV["input"] = input
 puts "=================================="
 puts
-puts "Running #{$part} with #{$input}..."
-require "./#{$part}"
+puts "Running #{part} with #{input}..."
+require "./#{part}"
 puts
 puts "=================================="
