@@ -40,9 +40,13 @@ if [day, part, input].any?(&:nil?)
 end
 
 ENV["input"] = input
-puts "=================================="
-puts
-puts "Running #{part} with #{input}..."
+puts "==================================\n\n"
+puts "Running #{part} with #{input}...\n\n"
+puts "answer:"
+starting = Time.now
 require "./#{part}"
+ending = Time.now
+puts "\n\n"
+puts "elapsed time: #{ending - starting} seconds"
 puts
 puts "=================================="
