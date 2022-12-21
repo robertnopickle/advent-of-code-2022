@@ -11,10 +11,6 @@ class Coords
     (x - c.x).abs + (y - c.y).abs
   end
 
-  def eql?(c)
-    x == c.x && y == c.y
-  end
-
   def xy
     [x, y]
   end
@@ -64,7 +60,8 @@ positions.each do |p|
   $beacon_sensor_pairs << beacon_sensor_pair
 end
 
-# find all of the beacon range intersections
+# pair off all of the possible combinations of SensorBeaconPairs
+# so we don't waste time checking the same pairs twice
 $pairs_of_pairs = []
 $beacon_sensor_pairs.each do |pair|
   $beacon_sensor_pairs.each do |pair2|
@@ -75,6 +72,7 @@ $beacon_sensor_pairs.each do |pair|
 end
 $pairs_of_pairs = $pairs_of_pairs.uniq
 
+# find all of the beacon range borders that are touching and check for beacons
 $possible_beacon_coords = nil
 $pairs_of_pairs.each do |set|
   (a, b) = set.to_a
